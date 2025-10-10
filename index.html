@@ -1,83 +1,174 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>BNB Tiger Inu (Official) — BNBTiger on BNB Smart Chain</title>
-<meta name="description" content="BNB Tiger Inu (Official) — BNBTiger is a community-driven BEP-20 token on BNB Smart Chain." />
+  <!-- UPDATED: title + description -->
+  <title>BNB Tiger Inu (Official) — BNBTiger on BNB Smart Chain</title>
+  <meta name="description" content="BNB Tiger Inu (Official) — BNBTiger is a community-driven BEP-20 token on BNB Smart Chain (BSC)." />
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="BNB Tiger Inu (Official)">
-<meta property="og:description" content="Community-driven BEP-20 token on BNB Smart Chain.">
-<meta property="og:url" content="https://bnbtigertoken.org/">
-<meta property="og:image" content="/assets/logo-200.png">
+  <!-- Favicon (new tiger icon) -->
+  <link rel="icon" href="/assets/bnbtiger-logo-32.png" sizes="32x32" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BNB Tiger Inu (Official)">
-<meta name="twitter:description" content="Community-driven BEP-20 token on BNB Smart Chain.">
-<meta name="twitter:image" content="/assets/logo-200.png">
+  <!-- NEW: social preview meta (does not affect styling) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BNB Tiger Inu (Official)">
+  <meta property="og:description" content="Community-driven BEP-20 token on BNB Smart Chain (BSC).">
+  <meta property="og:url" content="https://bnbtigertoken.org/">
+  <meta property="og:image" content="https://bnbtigertoken.org/assets/bnbtiger-logo-200.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="BNB Tiger Inu (Official)">
+  <meta name="twitter:description" content="Community-driven BEP-20 token on BNB Smart Chain (BSC).">
+  <meta name="twitter:image" content="https://bnbtigertoken.org/assets/bnbtiger-logo-200.png">
 
-<!-- JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"BNB Tiger Inu (Official)",
-  "url":"https://bnbtigertoken.org",
-  "logo":"https://bnbtigertoken.org/assets/logo-200.png",
-  "contactPoint":[{"@type":"ContactPoint","email":"info@bnbtigertoken.org","contactType":"support"}]
-}
-</script>
-
-<style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;margin:0;background:#f6f7fb;color:#111}
-.main{max-width:960px;margin:40px auto;padding:0 16px}
-.header{display:flex;align-items:center;gap:16px}
-.header img{width:56px;height:56px;border-radius:12px}
-h1{margin:0;font-size:1.6rem}
-.token-card{max-width:720px;margin:24px 0;padding:16px 20px;border:1px solid #e6e6e6;border-radius:12px;background:#fff}
-.token-card a{word-break:break-all}
-.disclaimer{font-size:.9rem;color:#666;margin:24px 0;max-width:720px}
-footer{margin:24px 0;color:#444}
-footer a{color:inherit}
-</style>
+  <style>
+    :root{
+      --bg:#0f172a;          /* slate-900 */
+      --panel:#111827;       /* gray-900 */
+      --muted:#94a3b8;       /* slate-400 */
+      --text:#e5e7eb;        /* gray-200 */
+      --accent:#22c55e;      /* green-500 */
+      --border:#1f2937;      /* gray-800 */
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    a{color:#60a5fa;text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:32px auto;padding:0 16px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 8px 24px rgb(0 0 0 / .25)}
+    .row{display:flex;gap:18px;align-items:center}
+    .logo{width:72px;height:72px;border-radius:12px;flex:0 0 72px}
+    h1{margin:0;font-size:28px;line-height:1.2}
+    .tagline{margin-top:6px;color:var(--muted)}
+    .kv{margin:18px 0 0;display:grid;grid-template-columns:160px 1fr;gap:10px;border:1px solid var(--border);border-radius:12px;padding:16px}
+    .kv .k{color:var(--muted)}
+    .btn{display:inline-block;background:var(--accent);color:#06240f;border-radius:10px;padding:12px 16px;font-weight:700;border:none;cursor:pointer}
+    .btn:active{transform:translateY(1px)}
+    .links{margin-top:18px}
+    footer{margin:28px 0;color:var(--muted);font-size:14px}
+    .pill{display:inline-block;background:#0b1220;border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:999px}
+    .grid{display:grid;gap:12px}
+    @media (max-width:640px){ .kv{grid-template-columns:1fr} .row{align-items:flex-start} }
+  </style>
 </head>
 <body>
-  <div class="main">
-    <div class="header">
-      <img src="/assets/logo-200.png" alt="BNBTiger logo">
-      <h1>BNB Tiger Inu (Official)</h1>
-    </div>
+  <main class="wrap">
+    <section class="card grid" style="gap:20px">
+      <div class="row">
+        <!-- Header tiger logo (new) -->
+        <img src="/assets/bnbtiger-logo-200.png" alt="BNBTiger" class="logo" />
+        <div>
+          <!-- UPDATED: display name -->
+          <h1>BNB Tiger Inu (Official) <span class="pill">(BNBTiger)</span></h1>
+          <div class="tagline">A community-driven token with fixed supply and future utility on BNB Smart Chain.</div>
+        </div>
+      </div>
 
-    <section class="token-card">
-      <h2>Token details</h2>
-      <ul>
-        <li><strong>Symbol:</strong> BNBTiger</li>
-        <li><strong>Contract (BEP-20):</strong>
-          <a href="https://bscscan.com/token/0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D">
-            0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D
-          </a>
-        </li>
-        <li><strong>Chain:</strong> BNB Smart Chain</li>
-        <li><strong>Decimals:</strong> 3</li>
-      </ul>
+      <div class="kv">
+        <div class="k">Network</div>
+        <div>BNB Smart Chain (BSC, <code>chainId 56</code>)</div>
+
+        <div class="k">Contract</div>
+        <div>
+          <code id="contract">0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D</code>
+          — <a href="https://bscscan.com/token/0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D" target="_blank" rel="noopener">View on BscScan</a>
+        </div>
+
+        <div class="k">Symbol</div>
+        <div>BNBTiger</div>
+
+        <div class="k">Decimals</div>
+        <div>3</div>
+      </div>
+
+      <div>
+        <button class="btn" id="addBtn">Add Token to MetaMask</button>
+      </div>
+
+      <div class="links">
+        <strong>Official:</strong>
+        <a href="/whitepaper.pdf" target="_blank" rel="noopener">Whitepaper (PDF)</a> ·
+        <a href="/team" target="_blank" rel="noopener">Team</a> ·
+        <a href="mailto:info@bnbtigertoken.org">info@bnbtigertoken.org</a> ·
+        <a href="https://github.com/jumaibrahimk6-lang/bnbtiger-site" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </section>
 
-    <p class="disclaimer">
-      Disclaimer: BNB Tiger Inu (Official) is a community-driven token on BNB Smart Chain.
-      Not affiliated with Binance or BNB Chain. Cryptocurrency involves risk; do your own research.
-    </p>
-
     <footer>
-      <a href="/">Home</a> ·
-      <a href="/whitepaper.pdf" target="_blank" rel="noopener">Whitepaper</a> ·
-      <a href="mailto:info@bnbtigertoken.org">Contact</a> ·
-      <span>Twitter (soon)</span> ·
-      <span>Telegram (soon)</span>
+      <!-- UPDATED: disclaimer + name -->
+      <p>BNB Tiger Inu (Official) is <strong>not affiliated</strong> with Binance or BNB Chain. Crypto assets are risky; this site is informational and not financial advice.</p>
+      <p>© <span id="yr"></span> BNB Tiger Inu (Official)</p>
     </footer>
-  </div>
+  </main>
+
+  <script>
+    // --- Token constants ---
+    const tokenAddress  = '0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D';
+    const tokenSymbol   = 'BNBTiger';
+    const tokenDecimals = 3;
+    // MetaMask icon -> new tiger logo (64x64)
+    const tokenImage    = 'https://bnbtigertoken.org/assets/bnbtiger-logo-64.png';
+
+    // --- UI nicety ---
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Ensure BSC is available (optional helper)
+    async function ensureBSC() {
+      if (!window.ethereum) return;
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x38' }], // 56
+        });
+      } catch (switchError) {
+        if (switchError.code === 4902 || (switchError.data && switchError.data.originalError && switchError.data.originalError.code === 4902)) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: '0x38',
+                chainName: 'BNB Smart Chain',
+                nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+                rpcUrls: ['https://bsc-dataseed1.bnbchain.org/'],
+                blockExplorerUrls: ['https://bscscan.com/']
+              }]
+            });
+          } catch (addErr) { console.warn(addErr); }
+        }
+      }
+    }
+
+    async function addTokenToMetaMask() {
+      if (!window.ethereum) {
+        alert('MetaMask not detected. Please install MetaMask to add the token.');
+        return;
+      }
+      try {
+        await ensureBSC();
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: tokenAddress,
+              symbol: tokenSymbol,
+              decimals: tokenDecimals,
+              image: tokenImage
+            }
+          }
+        });
+        if (wasAdded) {
+          alert('BNBTiger added to MetaMask!');
+        } else {
+          alert('Token was not added.');
+        }
+      } catch (e) {
+        console.error(e);
+        alert('Could not add token.');
+      }
+    }
+
+    document.getElementById('addBtn').addEventListener('click', addTokenToMetaMask);
+  </script>
 </body>
 </html>
