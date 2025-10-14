@@ -103,6 +103,8 @@
 
       <div>
         <button class="btn" id="addBtn">Add Token to MetaMask</button>
+        <button class="btn" id="openInMM">Open in MetaMask (mobile)</button>
+        <button class="btn" id="copyContract" style="margin-left:8px;">Copy contract</button>
       </div>
 
       <div class="links">
@@ -191,6 +193,55 @@
     }
 
     document.getElementById('addBtn').addEventListener('click', addTokenToMetaMask);
+  </script>
+  <script>
+
+  // Mobile MetaMask deep-link + copy helper (non-intrusive)
+
+  (function(){
+
+    const dappUrl = "https://bnbtigertoken.org";
+
+    const mmDeepLink = "https://metamask.app.link/dapp/" + dappUrl.replace(/^https?:\/\//, "");
+
+    const isMobile = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    const hasProvider = typeof window.ethereum !== "undefined";
+
+
+
+    // Show deep-link only on mobile browsers OUTSIDE wallet apps
+
+    const openBtn = document.getElementById("openInMM");
+
+    if (openBtn) {
+
+      if (!(isMobile && !hasProvider)) { openBtn.style.display = "none"; }
+
+      openBtn.addEventListener("click", () => { window.location.href = mmDeepLink; });
+
+    }
+
+
+
+    // Copy contract helper (uses tokenAddress from your existing script)
+
+    const copyBtn = document.getElementById("copyContract");
+
+    if (copyBtn) {
+
+      copyBtn.addEventListener("click", async () => {
+
+        try { await navigator.clipboard.writeText(tokenAddress); alert("Contract copied!"); }
+
+        catch (e) { alert("Copy failed. Long-press the contract to copy."); }
+
+      });
+
+    }
+
+  })();
+
   </script>
 </body>
 </html>
