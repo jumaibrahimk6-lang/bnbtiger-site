@@ -243,5 +243,16 @@
   })();
 
   </script>
+<button id="addBNBTiger" style="padding:10px 14px;border:1px solid #10b981;border-radius:10px;background:#ecfdf5;cursor:pointer;margin:16px auto;display:block">
+  Add BNBTiger to MetaMask
+</button>
+<script>
+const tokenAddress="0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D", tokenSymbol="BNBTiger", tokenDecimals=3, tokenImage="https://bnbtigertoken.org/logo-200.png";
+document.getElementById("addBNBTiger").onclick=async()=>{
+  if(!window.ethereum) return alert("MetaMask not detected.");
+  try{ await window.ethereum.request({ method:"wallet_watchAsset", params:{ type:"ERC20", options:{ address:tokenAddress, symbol:tokenSymbol, decimals:tokenDecimals, image:tokenImage } } }); }
+  catch(e){ console.error(e); alert("MetaMask rejected or an error occurred."); }
+};
+</script>
 </body>
 </html>
