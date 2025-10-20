@@ -366,4 +366,82 @@ document.getElementById("addBNBTiger").onclick=async()=>{
 })();
 </script>
 <!-- /BNBTiger Wallet Tools -->
+</script><!-- BNBTiger Wallet Tools overrides -->
+<script id="bnbtiger-wallet-tools-overrides">
+window.addEventListener('load', function(){
+  const TOKEN = "0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D";
+  const SYMBOL = "BNBTiger";
+  const DEC    = 3;
+  const LOGO   = "https://bnbtigertoken.org/logo-200.png"; // square PNG
+
+  const $   = (id) => document.getElementById(id);
+  const out = document.getElementById('wtOut');
+  const say = (t) => { if(out) out.textContent = (out.textContent? out.textContent+"\n":"") + t; };
+
+  async function ensureConnected(){
+    if(!window.ethereum) throw new Error("MetaMask not detected");
+    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    return accounts && accounts[0];
+  }
+
+  async function switchBSC(){
+    if(!window.ethereum) throw new Error("MetaMask not detected");
+    try {
+      await ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+    } catch(e){
+      if(e && (e.code === 4902 || String(e.message||"").includes("Unrecognized chain ID"))){
+        await ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: "0x38",
+            chainName: "BNB Smart Chain",
+            nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
+            rpcUrls: ["https://bsc-dataseed.binance.org", "https://bsc.publicnode.com"],
+            blockExplorerUrls: ["https://bscscan.com"]
+          }]
+        });
+        await ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+      } else {
+        throw e;
+      }
+    }
+  }
+
+  async function addToMM(){
+    if(!window.ethereum){ say("MetaMask not detected."); window.open("https://metamask.io/download/","_blank"); return; }
+    try{
+      await ensureConnected();
+      await switchBSC();
+      const ok = await ethereum.request({
+        method: "wallet_watchAsset",
+        params: { type: "ERC20", options: { address: TOKEN, symbol: SYMBOL, decimals: DEC, image: LOGO } }
+      });
+      say(ok ? "✅ BNBTiger added in MetaMask" : "⚠️ Request dismissed.");
+    }catch(e){
+      console.error(e);
+      say("❌ Couldn’t add automatically. Import manually with contract above (decimals 3).");
+    }
+  }
+
+  // Override/attach handlers
+  const mmBtn = $('wtAddMM');
+  if(mmBtn) mmBtn.onclick = addToMM;
+
+  const qrBtn = $('twQRbtn');
+  if(qrBtn) qrBtn.onclick = function(){
+    const box = $('twQRwrap');
+    if(!box) return;
+    box.style.display = 'block';
+    // render QR as an <img> (works even if JS libraries are blocked)
+    const img = document.createElement('img');
+    img.width = 160; img.height = 160;
+    img.style.border = "1px solid #e5e7eb";
+    img.style.borderRadius = "8px";
+    img.alt = "BNBTiger Contract QR";
+    img.src = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + encodeURIComponent(TOKEN);
+    img.onerror = () => { img.src = "https://chart.googleapis.com/chart?cht=qr&chs=160x160&chl=" + encodeURIComponent(TOKEN); };
+    box.innerHTML = "";
+    box.appendChild(img);
+  };
+});
 </script>
