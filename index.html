@@ -154,7 +154,7 @@
                 chainName: 'BNB Smart Chain',
                 nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
                 rpcUrls: ['https://bsc-dataseed1.bnbchain.org/'],
-                blockExplorerUrls: ['https://bscscan.com/']
+                blockExplorerUrls: ['https://bscscan.com']
               }]
             });
           } catch (addErr) { console.warn(addErr); }
@@ -247,7 +247,7 @@
   Add BNBTiger to MetaMask
 </button>
 <script>
-const tokenAddress="0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D", tokenSymbol="BNBTiger", tokenDecimals=3, tokenImage="https://bnbtigertoken.org/logo-200.png";
+const tokenAddress="0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D", tokenSymbol="BNBTiger", tokenDecimals=3, tokenImage="https://bnbtigertoken.org/assets/bnbtiger-logo-200.png";
 document.getElementById("addBNBTiger").onclick=async()=>{
   if(!window.ethereum) return alert("MetaMask not detected.");
   try{ await window.ethereum.request({ method:"wallet_watchAsset", params:{ type:"ERC20", options:{ address:tokenAddress, symbol:tokenSymbol, decimals:tokenDecimals, image:tokenImage } } }); }
@@ -280,7 +280,7 @@ document.getElementById("addBNBTiger").onclick=async()=>{
   const TOKEN = "0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D";
   const SYMBOL = "BNBTiger";
   const DEC    = 3;
-  const LOGO   = "https://bnbtigertoken.org/logo-200.png";
+  const LOGO   = "https://bnbtigertoken.org/assets/bnbtiger-logo-200.png";
 
   const $ = (id) => document.getElementById(id);
   const out = $("wtOut");
@@ -372,7 +372,7 @@ window.addEventListener('load', function(){
   const TOKEN = "0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D";
   const SYMBOL = "BNBTiger";
   const DEC    = 3;
-  const LOGO   = "https://bnbtigertoken.org/logo-200.png"; // square PNG
+  const LOGO   = "https://bnbtigertoken.org/assets/bnbtiger-logo-200.png"; // square PNG
 
   const $   = (id) => document.getElementById(id);
   const out = document.getElementById('wtOut');
