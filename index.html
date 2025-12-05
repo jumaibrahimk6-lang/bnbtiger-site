@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>BNB Tiger Inu (Official) — BNBTiger on BNB Smart Chain</title>
-  <meta name="description" content="BNB Tiger Inu (Official) — BNBTiger is a community-driven BEP-20 token on BNB Smart Chain (BSC)." />
+  <meta name="description" content="BNB Tiger Inu (Official) — BNBTiger is a community-driven BEP-20 token on BNB Smart Chain (BSC), with a fixed supply and transparent token model." />
 
   <link rel="icon" href="/assets/bnbtiger-logo-32.png" sizes="32x32" />
 
@@ -45,91 +45,495 @@
 
   <style>
     :root{
-      --bg:#0f172a;
-      --panel:#111827;
+      --bg:#020617;
+      --panel:#020617;
+      --panel-soft:#0b1220;
       --muted:#94a3b8;
       --text:#e5e7eb;
       --accent:#22c55e;
+      --accent-soft:rgba(34,197,94,0.1);
       --border:#1f2937;
+      --danger:#f97373;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
-    a{color:#60a5fa;text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:980px;margin:32px auto;padding:0 16px}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 8px 24px rgb(0 0 0 /.25)}
-    .row{display:flex;gap:18px;align-items:center}
-    .logo{width:72px;height:72px;border-radius:12px;flex:0 0 72px}
-    h1{margin:0;font-size:28px;line-height:1.2}
-    .tagline{margin-top:6px;color:var(--muted)}
-    .kv{margin:18px 0 0;display:grid;grid-template-columns:160px 1fr;gap:10px;border:1px solid var(--border);border-radius:12px;padding:16px}
-    .kv .k{color:var(--muted)}
-    .btn{display:inline-block;background:var(--accent);color:#06240f;border-radius:10px;padding:12px 16px;font-weight:700;border:none;cursor:pointer}
-    .btn:active{transform:translateY(1px)}
-    .links{margin-top:18px}
-    footer{margin:28px 0;color:var(--muted);font-size:14px}
-    .pill{display:inline-block;background:#0b1220;border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:999px}
-    .grid{display:grid;gap:12px}
-    @media (max-width:640px){ .kv{grid-template-columns:1fr} .row{align-items:flex-start} }
-    .muted { color: var(--muted); font-size: 13px; }
+    body{
+      margin:0;
+      background:radial-gradient(circle at top,#0b1120 0,var(--bg) 55%,#000 100%);
+      color:var(--text);
+      font:16px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    }
+    a{color:#60a5fa;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+    .top-nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:24px;
+    }
+    .top-nav-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .top-logo{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+    }
+    .top-name{
+      font-weight:600;
+      font-size:15px;
+    }
+    .top-tag{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .top-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      font-size:13px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:4px 10px;
+      color:var(--muted);
+    }
+    .pill-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 0 4px var(--accent-soft);
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(2,6,23,0.98));
+      border-radius:20px;
+      border:1px solid rgba(148,163,184,0.2);
+      box-shadow:0 24px 80px rgba(0,0,0,0.65);
+      padding:26px 24px 26px;
+    }
+    .hero-grid{
+      display:grid;
+      gap:22px;
+    }
+    @media(min-width:860px){
+      .hero-grid{
+        grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+      }
+    }
+    .hero-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .hero-title h1{
+      margin:0;
+      font-size:30px;
+      line-height:1.15;
+    }
+    .hero-sub{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+      max-width:520px;
+    }
+    .hero-badges{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      font-size:12px;
+    }
+    .badge{
+      border-radius:999px;
+      border:1px solid var(--border);
+      padding:4px 9px;
+      color:var(--muted);
+      background:#020617;
+    }
+
+    .hero-actions{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .btn-primary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:var(--accent);
+      color:#022c16;
+      font-weight:600;
+      font-size:14px;
+      border:none;
+      cursor:pointer;
+      box-shadow:0 12px 35px rgba(34,197,94,0.35);
+    }
+    .btn-primary:active{transform:translateY(1px);}
+    .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.7);
+      border:1px solid var(--border);
+      color:var(--text);
+      font-size:14px;
+      cursor:pointer;
+    }
+    .btn-ghost:active{transform:translateY(1px);}
+
+    .contract-box{
+      background:#020617;
+      border-radius:14px;
+      border:1px solid var(--border);
+      padding:14px 14px 12px;
+      font-size:13px;
+    }
+    .contract-label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:4px;
+    }
+    .contract-row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .contract-hash{
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      font-size:13px;
+      background:#020617;
+      padding:4px 8px;
+      border-radius:8px;
+      border:1px solid #1e293b;
+    }
+    .mini-tag{
+      font-size:11px;
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .stats-grid{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
+    @media(min-width:520px){
+      .stats-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+    .stat-card{
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#020617;
+      padding:10px 12px;
+      font-size:13px;
+    }
+    .stat-label{
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:3px;
+    }
+    .stat-value{
+      font-weight:500;
+    }
+
+    .section{
+      margin-top:28px;
+    }
+    .section-title{
+      font-size:18px;
+      margin:0 0 10px;
+    }
+    .info-grid{
+      display:grid;
+      gap:14px;
+    }
+    @media(min-width:860px){
+      .info-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
+    .info-card{
+      background:rgba(15,23,42,0.9);
+      border-radius:16px;
+      border:1px solid var(--border);
+      padding:14px 14px 12px;
+      font-size:14px;
+    }
+    .info-card h3{
+      margin:0 0 6px;
+      font-size:15px;
+    }
+    .info-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .info-list{
+      margin:6px 0 0;
+      padding-left:16px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .links-row{
+      margin-top:18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(15,23,42,0.9);
+      padding:12px 14px;
+      font-size:13px;
+    }
+    .links-row strong{
+      font-size:13px;
+    }
+    .links-inline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:6px;
+    }
+    .link-chip{
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      font-size:12px;
+    }
+    .link-chip:hover{
+      text-decoration:none;
+      border-color:#334155;
+    }
+
+    footer{
+      margin:26px 0 10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* Wallet tools box reuse but slightly darker theme */
+    #bnbtiger-wallet-tools{
+      background:#020617;
+      border-color:#1f2937 !important;
+      color:#e5e7eb;
+    }
+    #bnbtiger-wallet-tools button{
+      background:#0f172a;
+      color:#e5e7eb;
+      border:1px solid #1f2937;
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:12px;
+      cursor:pointer;
+    }
+    #bnbtiger-wallet-tools button:active{
+      transform:translateY(1px);
+    }
+    #bnbtiger-wallet-tools a{
+      font-size:12px;
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="card grid" style="gap:20px">
-      <div class="row">
-        <img src="/assets/bnbtiger-logo-200.png" alt="BNBTiger" class="logo" />
+    <!-- Top Nav -->
+    <header class="top-nav">
+      <div class="top-nav-left">
+        <img src="/assets/bnbtiger-logo-200.png" alt="BNBTiger logo" class="top-logo">
         <div>
-          <h1>BNB Tiger Inu (Official) <span class="pill">(BNBTiger)</span></h1>
-          <div class="tagline">A community-driven token with fixed supply and future utility on BNB Smart Chain.</div>
+          <div class="top-name">BNB Tiger Inu (Official)</div>
+          <div class="top-tag">BNBTiger · BEP-20 on BNB Smart Chain</div>
         </div>
       </div>
+      <div class="top-links">
+        <span class="pill">
+          <span class="pill-dot"></span>
+          Live on BNB Smart Chain
+        </span>
+        <a href="https://bscscan.com/token/0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D" target="_blank" rel="noopener" class="pill">
+          View on BscScan
+        </a>
+      </div>
+    </header>
 
-      <div class="kv">
-        <div class="k">Network</div>
-        <div>BNB Smart Chain (BSC, <code>chainId 56</code>)</div>
-
-        <div class="k">Contract</div>
+    <!-- Hero + Contract / Actions -->
+    <section class="hero-card">
+      <div class="hero-grid">
+        <!-- Left: text -->
         <div>
-          <code id="contract">0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D</code>
-          — <a href="https://bscscan.com/token/0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D" target="_blank" rel="noopener">View on BscScan</a>
+          <div class="hero-title">
+            <h1>BNB Tiger Inu (BNBTiger)</h1>
+          </div>
+          <p class="hero-sub">
+            BNBTiger is a community-driven BEP-20 token on BNB Smart Chain with a fixed supply and a simple,
+            transparent token model. No presale, no team allocation, no minting. Designed as an easy-to-understand
+            token that the community can hold, trade, and experiment with.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Network: BNB Smart Chain (BSC, chainId 56)</span>
+            <span class="badge">Type: BEP-20</span>
+            <span class="badge">Symbol: BNBTiger</span>
+            <span class="badge">Decimals: 3</span>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" id="addBtn">
+              Add BNBTiger to Wallet
+            </button>
+            <a class="btn-ghost" href="https://pancakeswap.finance/swap?outputCurrency=0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D" target="_blank" rel="noopener">
+              Trade on PancakeSwap
+            </a>
+            <button class="btn-ghost" id="openInMM">
+              Open in MetaMask (mobile)
+            </button>
+          </div>
         </div>
 
-        <div class="k">Symbol</div>
-        <div>BNBTiger</div>
+        <!-- Right: contract + stats -->
+        <div>
+          <div class="contract-box">
+            <div class="contract-label">Contract address</div>
+            <div class="contract-row">
+              <span class="contract-hash" id="contract">0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D</span>
+              <button class="btn-ghost" id="copyContract" style="padding:6px 10px;font-size:11px;">
+                Copy
+              </button>
+            </div>
+            <div class="mini-tag">
+              Deployed on BNB Smart Chain (BSC). You can verify the contract and token holdings directly on BscScan.
+            </div>
+          </div>
 
-        <div class="k">Decimals</div>
-        <div>3</div>
-      </div>
-
-      <div>
-        <button class="btn" id="addBtn">Add Token to Wallet</button>
-        <button class="btn" id="openInMM" style="margin-left:8px">Open in MetaMask (mobile)</button>
-        <button class="btn" id="copyContract" style="margin-left:8px;">Copy contract</button>
-      </div>
-
-      <!-- Updated Links Row -->
-      <div class="links">
-        <strong>Official:</strong>
-        <a href="/whitepaper.pdf" target="_blank" rel="noopener">Whitepaper (PDF)</a> ·
-        <a href="/team" target="_blank" rel="noopener">Team</a> ·
-        <a href="mailto:info@bnbtigertoken.org">info@bnbtigertoken.org</a> ·
-        <a href="https://github.com/jumaibrahimk6-lang/bnbtiger-site" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="https://t.me/bnbtigercommunity" target="_blank" rel="noopener">Telegram</a> ·
-        <a href="https://x.com/BNBTigerToken" target="_blank" rel="noopener">X (Twitter)</a> ·
-        <a href="https://pancakeswap.finance/swap?outputCurrency=0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D" target="_blank" rel="noopener">Trade on PancakeSwap</a> ·
-        <a href="https://pinksale.finance/pinklock/bsc/record/1401130" target="_blank" rel="noopener">LP Lock (PinkLock)</a>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Total Supply</div>
+              <div class="stat-value">56,000,000,000,000,000,000,000 (56 × 10²¹)</div>
+              <div class="mini-tag">Fixed supply. No minting or burning functions.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Contract Type</div>
+              <div class="stat-value">Standard BEP-20</div>
+              <div class="mini-tag">No reflections, no auto-LP, no transfer taxes.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Info cards: About / Token basics / Safety -->
+    <section class="section">
+      <h2 class="section-title">Project overview</h2>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>About BNBTiger</h3>
+          <p>
+            BNB Tiger Inu (BNBTiger) is a simple, community-focused token built on BNB Smart Chain.
+            The project emphasizes straightforward token behaviour without complex mechanics so that
+            holders can easily understand what they own and how it works.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>Token basics</h3>
+          <p>
+            BNBTiger runs as a BEP-20 contract on BSC with a fixed total supply and standard transfer
+            behaviour. There are no advanced tokenomics such as reflections, rebasing, or automatic
+            burning. Supply and balances can be verified entirely on-chain.
+          </p>
+          <ul class="info-list">
+            <li>Network: BNB Smart Chain (BSC)</li>
+            <li>Symbol: BNBTiger</li>
+            <li>Decimals: 3</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>Safety & transparency</h3>
+          <p>
+            The project does not include a presale, private sale, or dedicated team allocation. There is
+            no mint function, and the supply is fixed at deployment. Listings, integrations, and site
+            updates are handled openly and can be tracked via the official website and explorer links.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Official links -->
+    <section class="section">
+      <h2 class="section-title">Official links</h2>
+      <div class="links-row">
+        <strong>Project resources</strong>
+        <div class="links-inline" style="margin-top:6px;">
+          <a class="link-chip" href="https://bnbtigertoken.org" target="_blank" rel="noopener">Website</a>
+          <a class="link-chip" href="/whitepaper.pdf" target="_blank" rel="noopener">Whitepaper (PDF)</a>
+          <a class="link-chip" href="/team" target="_blank" rel="noopener">Team</a>
+          <a class="link-chip" href="mailto:info@bnbtigertoken.org">Email support</a>
+        </div>
+
+        <strong style="display:block;margin-top:10px;">Community & tracking</strong>
+        <div class="links-inline" style="margin-top:6px;">
+          <a class="link-chip" href="https://t.me/bnbtigercommunity" target="_blank" rel="noopener">Telegram</a>
+          <a class="link-chip" href="https://x.com/BNBTigerToken" target="_blank" rel="noopener">X (Twitter)</a>
+          <a class="link-chip" href="https://github.com/jumaibrahimk6-lang/bnbtiger-site" target="_blank" rel="noopener">GitHub</a>
+          <a class="link-chip" href="https://dexscreener.com/bsc/0x131895e02b515099A7B14181413cF2bbe0a8880B" target="_blank" rel="noopener">DexScreener pair</a>
+          <a class="link-chip" href="https://pinksale.finance/pinklock/bsc/record/1401130" target="_blank" rel="noopener">LP Lock (PinkLock)</a>
+          <a class="link-chip" href="https://pancakeswap.finance/swap?outputCurrency=0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D" target="_blank" rel="noopener">PancakeSwap</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wallet Tools (same logic, reshaped box) -->
+    <section id="bnbtiger-wallet-tools" style="max-width:900px;margin:26px auto 0;padding:16px;border:1px solid #e5e7eb;border-radius:14px;">
+      <h3 style="margin:0 0 10px 0;font-size:18px;">BNBTiger — Wallet tools</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <button id="wtSwitch">Add/Switch to BSC</button>
+        <button id="wtAddMM">Add BNBTiger to Wallet</button>
+        <button id="wtCheck">Read on-chain balance</button>
+        <button id="twCopy">Copy contract</button>
+        <a id="twOpen" href="trust://">Open Trust Wallet</a>
+        <button id="twQRbtn">Show QR</button>
+      </div>
+      <div id="wtOut" style="margin-top:10px;white-space:pre-wrap;font-size:12px;"></div>
+      <div id="wtPrice" style="margin-top:6px;color:#9ca3af;font-size:12px;"></div>
+      <div id="twQRwrap" style="margin-top:10px;display:none">
+        <canvas id="twQR" width="160" height="160"></canvas>
+      </div>
+      <small style="display:block;margin-top:8px;color:#9ca3af;font-size:11px;">
+        Network: <b>BNB Smart Chain</b> — Contract:
+        <code>0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D</code> — Decimals: <b>3</b>
+      </small>
+    </section>
+
     <footer>
-      <p>BNB Tiger Inu (Official) is <strong>not affiliated</strong> with Binance or BNB Chain. Crypto assets are risky; this site is informational and not financial advice.</p>
+      <p>BNB Tiger Inu (Official) is <strong>not affiliated</strong> with Binance or BNB Chain. This site provides token information only and does not constitute financial advice.</p>
       <p>© <span id="yr"></span> BNB Tiger Inu (Official)</p>
     </footer>
   </main>
 
-  <!-- ALL YOUR ORIGINAL SCRIPTS REMAIN UNCHANGED BELOW -->
-  <!-- Wallet add, wallet tools, QR, price fetch, MetaMask deep links, etc. -->
-
+  <!-- Scripts (unchanged logic) -->
   <script>
   (function(){
     const TOKEN = {
@@ -203,34 +607,15 @@
     ["addBtn","addBNBTiger","wtAddMM"].forEach(id=>{
       const el = $(id); if(el) el.onclick = handleAddTokenClick;
     });
-    $("openInMM").onclick = openInMetaMaskApp;
-    $("copyContract").onclick = ()=>navigator.clipboard.writeText(TOKEN.address).then(()=>alert("Copied!"));
+    const mmBtn = $("openInMM");
+    if (mmBtn) mmBtn.onclick = openInMetaMaskApp;
+    const copyBtn = $("copyContract");
+    if (copyBtn) copyBtn.onclick = ()=>navigator.clipboard.writeText(TOKEN.address).then(()=>alert("Copied!"));
 
-    document.getElementById('yr').textContent = new Date().getFullYear();
+    const yrEl = document.getElementById('yr');
+    if (yrEl) yrEl.textContent = new Date().getFullYear();
   })();
   </script>
-
-  <!-- Wallet Tools -->
-  <section id="bnbtiger-wallet-tools" style="max-width:900px;margin:24px auto;padding:16px;border:1px solid #e5e7eb;border-radius:14px;">
-    <h3 style="margin:0 0 10px 0;font-size:20px;">BNBTiger — Wallet Tools</h3>
-    <div style="display:flex;flex-wrap:wrap;gap:10px">
-      <button id="wtSwitch">Add/Switch to BSC</button>
-      <button id="wtAddMM">Add BNBTiger to Wallet</button>
-      <button id="wtCheck">Read On-chain Balance</button>
-      <button id="twCopy">Copy Contract</button>
-      <a id="twOpen" href="trust://">Open Trust Wallet</a>
-      <button id="twQRbtn">Show QR</button>
-    </div>
-    <div id="wtOut" style="margin-top:10px;white-space:pre-wrap"></div>
-    <div id="wtPrice" style="margin-top:6px;color:#6b7280"></div>
-    <div id="twQRwrap" style="margin-top:10px;display:none">
-      <canvas id="twQR" width="160" height="160"></canvas>
-    </div>
-    <small style="display:block;margin-top:8px;color:#6b7280">
-      Network: <b>BNB Smart Chain</b> — Contract:
-      <code>0xAc68475a88DA0fbAdB73fBF4Cc157EA137dbdC2D</code> — Decimals: <b>3</b>
-    </small>
-  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
@@ -242,7 +627,7 @@
     const out=$("wtOut");
     const priceBox=$("wtPrice");
 
-    const say=t=>out.textContent += t+"\n";
+    const say=t=>{ if(out){ out.textContent += t+"\\n"; } };
 
     async function switchBSC(){
       await ethereum.request({
@@ -258,9 +643,11 @@
       await ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x38"}]});
     }
 
-    $("wtSwitch").onclick=()=>switchBSC().then(()=>say("BSC Ready"));
+    const wtSwitch = $("wtSwitch");
+    if (wtSwitch) wtSwitch.onclick=()=>switchBSC().then(()=>say("BSC ready"));
 
-    $("wtAddMM").onclick=async()=>{
+    const wtAddMM = $("wtAddMM");
+    if (wtAddMM) wtAddMM.onclick=async()=>{
       await switchBSC();
       await ethereum.request({method:"wallet_watchAsset",params:{
         type:"ERC20",
@@ -269,7 +656,8 @@
       say("BNBTiger added");
     };
 
-    $("wtCheck").onclick=async()=>{
+    const wtCheck = $("wtCheck");
+    if (wtCheck) wtCheck.onclick=async()=>{
       const provider=new ethers.providers.Web3Provider(window.ethereum);
       await provider.send("eth_requestAccounts",[]);
       const signer=provider.getSigner();
@@ -278,19 +666,24 @@
       const c=new ethers.Contract(TOKEN,abi,provider);
       const raw=await c.balanceOf(me);
       const bal=Number(ethers.utils.formatUnits(raw,DEC));
-      say("Wallet: "+me+"\nBalance: "+bal.toLocaleString());
+      say("Wallet: "+me+"\\nBalance: "+bal.toLocaleString());
 
       try{
         const r=await fetch(`https://api.dexscreener.com/latest/dex/tokens/bsc/${TOKEN}`);
         const j=await r.json();
         const p=j.pairs?.[0]?.priceUsd||0;
-        priceBox.textContent = p ? `Price: $${p}` : "Price unavailable";
+        if (priceBox) priceBox.textContent = p ? `Price: $${p}` : "Price unavailable";
       }catch{}
     };
 
-    $("twCopy").onclick=()=>navigator.clipboard.writeText(TOKEN).then(()=>say("Copied"));
+    const twCopy = $("twCopy");
+    if (twCopy) twCopy.onclick=()=>navigator.clipboard.writeText(TOKEN).then(()=>say("Copied"));
 
-    $("twQRbtn").onclick=()=>QRCode.toCanvas($("twQR"),TOKEN,{width:160}).then(()=>{$("twQRwrap").style.display="block";});
+    const twQRbtn = $("twQRbtn");
+    if (twQRbtn) twQRbtn.onclick=()=>QRCode.toCanvas($("twQR"),TOKEN,{width:160}).then(()=>{
+      const wrap = $("twQRwrap");
+      if (wrap) wrap.style.display="block";
+    });
   })();
   </script>
 
