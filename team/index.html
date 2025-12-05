@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Team — BNB Tiger Inu (Official)</title>
   <meta name="description" content="Core contributors of BNB Tiger Inu (Official). Public professional profiles linked for transparency." />
 
   <link rel="icon" href="/assets/bnbtiger-logo-32.png" sizes="32x32" />
+
+  <!-- Simple social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BNB Tiger Inu (Official) – Team">
+  <meta property="og:description" content="Core contributors of BNB Tiger Inu (Official). Public professional profiles linked for transparency.">
+  <meta property="og:url" content="https://bnbtigertoken.org/team/">
+  <meta property="og:image" content="https://bnbtigertoken.org/assets/bnbtiger-logo-200.png">
 
   <style>
     :root{
@@ -20,112 +27,81 @@
       --border:#1f2937;
       --link:#60a5fa;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     body{
       margin:0;
-      min-height:100vh;
-      background:radial-gradient(circle at top,#0b1220 0,#020617 40%,#000 100%);
+      background:radial-gradient(circle at top,#0b1120,#020617 55%);
       color:var(--text);
-      font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      font:15px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
     }
     a{color:var(--link);text-decoration:none}
     a:hover{text-decoration:underline}
-    main.wrap{
-      max-width:960px;
-      margin:40px auto;
-      padding:0 16px 40px;
-    }
+    .wrap{max-width:960px;margin:32px auto;padding:0 16px}
     .card{
-      background:rgba(15,23,42,.9);
-      border:1px solid rgba(148,163,184,.25);
-      border-radius:20px;
-      padding:24px 24px 28px;
-      box-shadow:0 18px 45px rgba(0,0,0,.45);
-      backdrop-filter:blur(14px);
+      background:rgba(15,23,42,0.95);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 18px 40px rgba(0,0,0,.55);
     }
     h1{
-      margin:0 0 8px;
       font-size:26px;
-      letter-spacing:.02em;
+      margin-bottom:6px;
     }
     .tagline{
       color:var(--muted);
       font-size:14px;
-      margin-bottom:20px;
+      margin-bottom:22px;
     }
-    .team-list{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-      margin-top:4px;
+    .team-grid{
+      display:grid;
+      gap:14px;
+      margin-bottom:20px;
     }
     .member{
       display:flex;
-      gap:16px;
-      padding:16px 16px 14px;
+      gap:14px;
+      padding:14px 16px;
       border-radius:14px;
-      background:rgba(15,23,42,.9);
-      border:1px solid rgba(30,64,175,.5);
-    }
-    .avatar-wrap{
-      flex:0 0 52px;
-      height:52px;
-      border-radius:14px;
-      background:#020617;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 10px 25px rgba(0,0,0,.55);
+      border:1px solid var(--border);
+      background:radial-gradient(circle at top left,rgba(34,197,94,0.12),rgba(15,23,42,1));
     }
     .avatar{
-      width:36px;
-      height:36px;
-      border-radius:10px;
+      width:52px;
+      height:52px;
+      border-radius:15px;
+      flex:0 0 52px;
+      background:#020617;
     }
-    .member-main{
-      flex:1;
-      min-width:0;
+    .info h2{
+      font-size:17px;
+      margin-bottom:4px;
     }
-    .member-name{
-      font-weight:600;
-      font-size:16px;
-    }
-    .member-role{
-      font-size:14px;
+    .role{
       color:var(--muted);
-      margin-top:2px;
+      font-weight:400;
+      font-size:14px;
+    }
+    .info p{
+      margin:2px 0;
+      font-size:14px;
     }
     .links{
-      margin-top:6px;
+      margin-top:4px;
       font-size:14px;
     }
-    .links a + a::before{
-      content:" · ";
-      color:var(--muted);
-    }
-    .disclaimer{
-      margin-top:22px;
-      font-size:13px;
-      color:var(--muted);
-    }
+    .links a{color:var(--link);}
     footer{
-      margin-top:22px;
-      font-size:13px;
+      max-width:960px;
+      margin:18px auto 32px;
+      padding:0 16px;
       color:var(--muted);
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
+      font-size:13px;
     }
-    footer a{color:var(--muted)}
+    footer a{color:var(--link);}
     @media (max-width:640px){
-      main.wrap{margin-top:28px}
-      .card{padding:20px 18px 24px}
-      h1{font-size:22px}
-      .member{
-        flex-direction:row;
-        align-items:flex-start;
-      }
+      .card{padding:22px 18px;}
+      .member{flex-direction:row;align-items:flex-start;}
     }
   </style>
 </head>
@@ -133,66 +109,45 @@
   <main class="wrap">
     <section class="card">
       <h1>Team</h1>
-      <p class="tagline">
-        Core contributors. Public professional profiles linked for transparency.
-      </p>
+      <p class="tagline">Core contributors. Public professional profiles linked for transparency.</p>
 
-      <div class="team-list">
-
+      <div class="team-grid">
         <!-- John -->
         <article class="member">
-          <div class="avatar-wrap">
-            <img src="/assets/bnbtiger-logo-64.png" alt="BNBTiger avatar" class="avatar">
-          </div>
-          <div class="member-main">
-            <div class="member-name">John Kinyanjui Ngugi — Lead</div>
-            <div class="member-role">
-              Smart contracts, coordination, community. Owns the initial
-              contract deployment and on-chain technical integration.
-            </div>
-            <div class="links">
+          <img src="/assets/bnbtiger-logo-64.png" alt="BNBTiger avatar" class="avatar">
+          <div class="info">
+            <h2>John Kinyanjui Ngugi <span class="role">— Lead</span></h2>
+            <p>Smart contracts, coordination, community.</p>
+            <p class="links">
               <a href="https://github.com/jumaibrahimk6-lang" target="_blank" rel="noopener">GitHub</a>
-            </div>
+            </p>
           </div>
         </article>
 
         <!-- Ibrahim -->
         <article class="member">
-          <div class="avatar-wrap">
-            <img src="/assets/bnbtiger-logo-64.png" alt="BNBTiger avatar" class="avatar">
-          </div>
-          <div class="member-main">
-            <div class="member-name">Ibrahim Juma — Co-founder &amp; Project Lead</div>
-            <div class="member-role">
-              Operations, documentation, and external integrations. Handles
-              listings and submissions (BscScan, CoinGecko, Trust Wallet, and
-              other analytics / wallet platforms) and coordinates project
-              communication.
-            </div>
-            <div class="links">
-              <a href="https://www.linkedin.com/in/juma-ibrahim-52586b238/" target="_blank" rel="noopener">LinkedIn</a>
+          <img src="/assets/bnbtiger-logo-64.png" alt="BNBTiger avatar" class="avatar">
+          <div class="info">
+            <h2>Ibrahim Juma <span class="role">— Founder &amp; Project Lead</span></h2>
+            <p>Smart contracts, infrastructure, integrations, and overall project direction.</p>
+            <p class="links">
+              <a href="https://www.linkedin.com/in/juma-ibrahim-52586b238/" target="_blank" rel="noopener">LinkedIn</a> ·
               <a href="https://github.com/jumaibrahimk6-lang" target="_blank" rel="noopener">GitHub</a>
-            </div>
+            </p>
           </div>
         </article>
-
       </div>
 
-      <p class="disclaimer">
-        BNBTiger is an independent project and is not associated with, endorsed by,
-        in partnership with, or acting on behalf of any other token or project— including
-        those with similar names or branding.
-      </p>
-
-      <footer>
-        <span>© <span id="yr"></span> BNBTiger</span>
-        <span><a href="/">Home</a></span>
-      </footer>
+      <p>BNBTiger is an independent project and is not associated with, endorsed by, in partnership with, or acting on behalf of any other token or project—including those with similar names or branding.</p>
     </section>
   </main>
 
+  <footer>
+    <p>© <span id="yr"></span> BNBTiger · <a href="/">Home</a></p>
+  </footer>
+
   <script>
-    // simple year fill
+    // simple year auto-update
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
